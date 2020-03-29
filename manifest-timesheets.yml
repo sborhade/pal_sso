@@ -1,0 +1,14 @@
+applications:
+- name: tracker-timesheets
+  path: ./applications/timesheets-server/build/libs/timesheets-server.jar
+  routes:
+  - route: timesheets-pal-tracker-boring-leopard-un.cfapps.io
+  memory: 1G
+  instances: 1
+  env:
+    GRANT_TYPE: client_credentials
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+  services:
+  - tracker-timesheets-database
+  - tracker-service-registry
+  - tracker-sso

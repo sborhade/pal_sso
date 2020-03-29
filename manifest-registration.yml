@@ -1,0 +1,14 @@
+applications:
+- name: tracker-registration
+  path: ./applications/registration-server/build/libs/registration-server.jar
+  routes:
+  - route: registration-pal-tracker-boring-leopard-un.cfapps.io
+  memory: 1G
+  instances: 1
+  env:
+    GRANT_TYPE: client_credentials
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+  services:
+  - tracker-registration-database
+  - tracker-service-registry
+  - tracker-sso
