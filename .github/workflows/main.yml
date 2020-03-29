@@ -54,7 +54,7 @@ jobs:
       - name: Deploy to cf
         run: |
           cf api "$CF_API_URL"
-          cf login
+          cf auth "$CF_USERNAME" "$CF_PASSWORD"
           cf target -o "$CF_ORG" -s "$CF_SPACE"
           cf push -f ./manifest-allocations.yml -p ./pal-tracker-distributed/allocations-server.jar
         env:
